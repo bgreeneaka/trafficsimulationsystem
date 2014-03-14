@@ -1,12 +1,11 @@
 package system;
 
 import planning.DirectRoute;
-import drivers.AggressiveDriver;
-import drivers.StandardDriver;
-import frontend.Gui;
 import vehicles.Car;
 import vehicles.VehicleBuilder;
 import vehicles.VehicleBuilderImpl;
+import drivers.StandardDriver;
+import frontend.Gui;
 
 public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
