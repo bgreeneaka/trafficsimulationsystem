@@ -1,6 +1,7 @@
 package system;
 
 import planning.DirectRoute;
+import drivers.AggressiveDriver;
 import drivers.StandardDriver;
 import frontend.Gui;
 import vehicles.Car;
@@ -12,7 +13,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 	Place[] road = new Place[100];
 
 	@Override
-	public void run() {
+	public void begin() {
 		setupRoad();
 		
 		new Thread(new Gui(this)).start();
@@ -22,17 +23,19 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 	public static void main(String[] args) {
 		TrafficSimulationSystem system = new TrafficSimulationSystemImpl();		
-		system.run();		
+		system.begin();		
 	}
 
 	private void setupVehicles() {
 		VehicleBuilder builder = new VehicleBuilderImpl();
 
 		for (int i = 0; i < 25; i++) {
+			
 			road[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver())
 					.withRoute(new DirectRoute()).build());
 			road[0].getVehicle().setPlace(road[0]);
+
 			
 			new Thread((Runnable) road[0].getVehicle()).start();
 			

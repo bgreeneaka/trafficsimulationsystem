@@ -32,6 +32,7 @@ public class Gui extends JFrame implements Runnable {
 		while (true) {
 			road = system.getState();
 			panel.removeAll();
+			
 			for (Place p : road) {
 				if (!p.isFree()) {
 					JButton button = new JButton(new ImageIcon("car.jpg"));
@@ -43,7 +44,6 @@ public class Gui extends JFrame implements Runnable {
 			}
 			
 			validate();
-			repaint();
 
 			try {
 				Thread.sleep(250);
