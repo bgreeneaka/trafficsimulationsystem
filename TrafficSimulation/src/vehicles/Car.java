@@ -1,10 +1,12 @@
 package vehicles;
 
+import drivers.Driver;
 import system.Place;
 
 public class Car implements Vehicle, Runnable {
 
 	Place place;
+	Driver driver;
 
 	@Override
 	public void run() {
@@ -20,9 +22,9 @@ public class Car implements Vehicle, Runnable {
 			place.setVehicle(null);
 			place = place.getNextPlace();
 		}
-		
+
 		try {
-			Thread.sleep((int) (Math.random()*250));
+			Thread.sleep((int) (Math.random() * driver.getSpeed()));
 		} catch (InterruptedException e) {
 		}
 	}
@@ -30,5 +32,10 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+
+	@Override
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 }

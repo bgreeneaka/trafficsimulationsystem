@@ -2,10 +2,10 @@ package drivers;
 
 public class StandardDriver implements Driver {
 
-	private int placesMoved = 1;
+	private int speed = 250;
 	
 	@Override
-	public int getPlacesMoved() {		
-		return placesMoved;
+	public int getSpeed() {		
+		return speed;
 	}
 }

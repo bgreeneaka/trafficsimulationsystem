@@ -14,17 +14,10 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 	@Override
 	public void run() {
 		setupRoad();
-		setupVehicles();
-
+		
 		new Thread(new Gui(this)).start();
-
-		while (true) {
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-
-			}
-		}
+		
+		setupVehicles();
 	}
 
 	public static void main(String[] args) {
@@ -36,14 +29,17 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 		VehicleBuilder builder = new VehicleBuilderImpl();
 
 		for (int i = 0; i < 25; i++) {
-			int j = (int) (Math.random() * road.length);
-
-			road[j].setVehicle((Car) builder.withVehicle(new Car())
+			road[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver())
 					.withRoute(new DirectRoute()).build());
-			road[j].getVehicle().setPlace(road[j]);
-
-			new Thread((Runnable) road[j].getVehicle()).start();
+			road[0].getVehicle().setPlace(road[0]);
+			
+			new Thread((Runnable) road[0].getVehicle()).start();
+			
+			try {
+				Thread.sleep(250);
+			} catch (InterruptedException e) {
+			}
 		}
 	}
 

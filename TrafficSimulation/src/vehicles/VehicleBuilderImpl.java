@@ -15,7 +15,7 @@ public class VehicleBuilderImpl implements VehicleBuilder {
 
 	@Override
 	public VehicleBuilder withDriver(Driver driver) {
-		// TODO Auto-generated method stub
+		this.vehicle.setDriver(driver);
 		return this;
 	}
 

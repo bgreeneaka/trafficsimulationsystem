@@ -2,5 +2,5 @@ package drivers;
 
 public interface Driver {
 
-	public int getPlacesMoved();
+	public int getSpeed();
 }
