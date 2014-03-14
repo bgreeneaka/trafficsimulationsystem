@@ -9,7 +9,7 @@ public class RoadPlace implements Place {
 
 	@Override
 	public boolean isFree() {
-		return null == vehicle ? true : false;
+		return null == vehicle ? true : false; 			//turnerier operator
 	}
 
 	@Override
