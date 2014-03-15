@@ -1,6 +1,6 @@
 package vehicles;
 
-import planning.Route;
+import route.Route;
 import drivers.Driver;
 
 public interface VehicleBuilder {

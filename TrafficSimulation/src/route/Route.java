@@ -1,4 +1,4 @@
-package planning;
+package route;
 
 public interface Route {
 

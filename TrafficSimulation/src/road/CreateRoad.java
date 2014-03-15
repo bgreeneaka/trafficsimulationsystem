@@ -2,29 +2,36 @@ package road;
 
 public class CreateRoad implements Road {
 
-	Place[] leftRoad = new Place[100];
-	Place[] rightRoad = new Place[100];
+	Place[] leftRoad;
+	Place[] rightRoad;
 
 	@Override
 	public void create() {
+		leftRoad = new Place[100];
+		rightRoad = new Place[100];
+		
+		// Initialize the first 2 places in each side of the road as we need
+		// them to bootstrap the process of linking each Place to its neighbours
 		leftRoad[0] = new RoadPlace();
 		leftRoad[1] = new RoadPlace();
-
-		leftRoad[0].setNextPlace(leftRoad[1]);
-		leftRoad[1].setPreviousPlace(leftRoad[0]);
 
 		rightRoad[0] = new RoadPlace();
 		rightRoad[1] = new RoadPlace();
 
+		// Link each of the first 2 Places to its neighbours
+		leftRoad[0].setNextPlace(leftRoad[1]);
+		leftRoad[1].setPreviousPlace(leftRoad[0]);
+
 		rightRoad[0].setPreviousPlace(rightRoad[1]);
 		rightRoad[1].setNextPlace(rightRoad[0]);
-		
+
 		leftRoad[0].setRightPlace(rightRoad[0]);
 		rightRoad[0].setLeftPlace(leftRoad[0]);
-		
+
 		leftRoad[1].setRightPlace(rightRoad[1]);
 		rightRoad[1].setLeftPlace(leftRoad[1]);
 
+		// Link each Place to its neighbours
 		for (int i = 2; i < leftRoad.length; i++) {
 			leftRoad[i] = new RoadPlace();
 			leftRoad[i - 1].setNextPlace(leftRoad[i]);
@@ -33,11 +40,12 @@ public class CreateRoad implements Road {
 			rightRoad[i] = new RoadPlace();
 			rightRoad[i - 1].setPreviousPlace(rightRoad[i]);
 			rightRoad[i].setNextPlace(rightRoad[i - 1]);
-			
+
 			leftRoad[i].setRightPlace(rightRoad[i]);
 			rightRoad[i].setLeftPlace(leftRoad[i]);
 		}
 
+		// Setup a link between the first and last Places of each road half.
 		leftRoad[leftRoad.length - 1].setNextPlace(leftRoad[0]);
 		leftRoad[0].setPreviousPlace(leftRoad[leftRoad.length - 1]);
 

@@ -11,15 +11,22 @@ import frontend.Gui;
 
 public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
-	Place[] leftRoad;
-	Place[] rightRoad;
+	Place[] westLeftRoad;
+	Place[] westRightRoad;
+	Place[] southLeftRoad;
+	Place[] southRightRoad;
 
 	@Override
 	public void begin() {
 		Road road = new CreateRoad();
+		
 		road.create();
-		leftRoad = road.getLeftRoad();
-		rightRoad = road.getRightRoad();
+		westLeftRoad = road.getLeftRoad();
+		westRightRoad = road.getRightRoad();
+		
+		road.create();
+		southLeftRoad = road.getLeftRoad();
+		southRightRoad = road.getRightRoad();
 
 		new Thread(new Gui(this)).start();
 
@@ -36,31 +43,31 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 		for (int i = 0; i < 10; i++) {
 
-			leftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
+			westLeftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver()).withColour("black_car.jpg").build());
-			leftRoad[0].getVehicle().setPlace(leftRoad[0]);
+			westLeftRoad[0].getVehicle().setPlace(westLeftRoad[0]);
 
-			new Thread((Runnable) leftRoad[0].getVehicle()).start();
+			new Thread((Runnable) westLeftRoad[0].getVehicle()).start();
 
-			rightRoad[0].setVehicle((Car) builder.withVehicle(new Car())
+			westRightRoad[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver()).withColour("red_car.jpg").build());
-			rightRoad[0].getVehicle().setPlace(rightRoad[0]);
+			westRightRoad[0].getVehicle().setPlace(westRightRoad[0]);
 
-			new Thread((Runnable) rightRoad[0].getVehicle()).start();
+			new Thread((Runnable) westRightRoad[0].getVehicle()).start();
 
 			try {
-				Thread.sleep(500);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 			}
 		}
 	}
 
 	public Place[] getLeftRoad() {
-		return leftRoad;
+		return westLeftRoad;
 	}
 
 	@Override
 	public Place[] getRightRoad() {
-		return rightRoad;
+		return westRightRoad;
 	}
 }

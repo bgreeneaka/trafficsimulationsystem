@@ -1,6 +1,8 @@
 package vehicles;
 
-import planning.Route;
+import planning.LookBackward;
+import planning.LookForward;
+import route.Route;
 import drivers.Driver;
 
 public class VehicleBuilderImpl implements VehicleBuilder {
@@ -15,6 +17,8 @@ public class VehicleBuilderImpl implements VehicleBuilder {
 
 	@Override
 	public VehicleBuilder withDriver(Driver driver) {
+		driver.setLookForward(new LookForward());
+		driver.setLookBackward(new LookBackward());
 		this.vehicle.setDriver(driver);
 		return this;
 	}
@@ -27,7 +31,6 @@ public class VehicleBuilderImpl implements VehicleBuilder {
 
 	@Override
 	public VehicleBuilder withRoute(Route route) {
-		// TODO Auto-generated method stub
 		return this;
 	}
 	

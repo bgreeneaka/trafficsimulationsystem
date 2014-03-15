@@ -17,7 +17,7 @@ public class Gui extends JFrame implements Runnable {
 	private Place[] leftRoad;
 	private Place[] rightRoad;
 
-	private GridLayout layout = new GridLayout(1, 100);
+	private GridLayout westLayout = new GridLayout(1, 100);
 	private JPanel mainPanel = new JPanel();
 	private JPanel leftRoadPanel = new JPanel();
 	private JPanel rightRoadPanel = new JPanel();
@@ -26,15 +26,16 @@ public class Gui extends JFrame implements Runnable {
 		this.system = system;
 		
 		add(mainPanel);
-		mainPanel.setLayout(new GridLayout(2, 1));
+		mainPanel.setLayout(new GridLayout(2, 2));
 		mainPanel.add(leftRoadPanel);
 		mainPanel.add(rightRoadPanel);
 		
-		leftRoadPanel.setLayout(layout);
-		rightRoadPanel.setLayout(layout);
+		leftRoadPanel.setLayout(westLayout);
+		rightRoadPanel.setLayout(westLayout);
 		
 		setSize(1600, 75);
 		setVisible(true);
+		setLocationRelativeTo(null);
 	}
 
 	@Override

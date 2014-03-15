@@ -35,11 +35,12 @@ public class Car implements Vehicle, Runnable {
 //		
 //		else
 			
-			if (place.getNextPlace().isFree()) {
+	//		if (place.getNextPlace().isFree()) {
+		
+		if (driver.lookForward(place, 1)) {
 			place.getNextPlace().setVehicle(this);
 			place.setVehicle(null);
 			place = place.getNextPlace();
-			count++;
 		}
 
 		try {
