@@ -3,8 +3,8 @@ package frontend;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import road.Place;
@@ -48,21 +48,21 @@ public class Gui extends JFrame implements Runnable {
 			
 			for (Place p : leftRoad) {
 				if (!p.isFree()) {
-					JButton button = new JButton(new ImageIcon(p.getVehicle().getImage()));
-					leftRoadPanel.add(button);
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle().getImage()));
+					leftRoadPanel.add(label);
 				} else {
-					JButton button = new JButton();
-					leftRoadPanel.add(button);
+					JLabel label = new JLabel();
+					leftRoadPanel.add(label);
 				}
 			}
 			
 			for (Place p : rightRoad) {
 				if (!p.isFree()) {
-					JButton button = new JButton(new ImageIcon(p.getVehicle().getImage()));
-					rightRoadPanel.add(button);
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle().getImage()));
+					rightRoadPanel.add(label);
 				} else {
-					JButton button = new JButton();
-					rightRoadPanel.add(button);
+					JLabel label = new JLabel();
+					rightRoadPanel.add(label);
 				}
 			}
 			
