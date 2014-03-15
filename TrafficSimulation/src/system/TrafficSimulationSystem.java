@@ -1,8 +1,12 @@
 package system;
 
+import road.Place;
+
 public interface TrafficSimulationSystem {
 
 	public void begin();
 	
-	public Place[] getState();
+	public Place[] getLeftRoad();
+	
+	public Place[] getRightRoad();
 }

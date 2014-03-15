@@ -7,38 +7,62 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import system.Place;
+import road.Place;
 import system.TrafficSimulationSystem;
 
 @SuppressWarnings("serial")
 public class Gui extends JFrame implements Runnable {
 
 	private TrafficSimulationSystem system;
-	private Place[] road;
+	private Place[] leftRoad;
+	private Place[] rightRoad;
 
 	private GridLayout layout = new GridLayout(1, 100);
-	private JPanel panel = new JPanel();
+	private JPanel mainPanel = new JPanel();
+	private JPanel leftRoadPanel = new JPanel();
+	private JPanel rightRoadPanel = new JPanel();
 
 	public Gui(TrafficSimulationSystem system) {
 		this.system = system;
-		add(panel);
-		setSize(1600, 50);
-		panel.setLayout(layout);
+		
+		add(mainPanel);
+		mainPanel.setLayout(new GridLayout(2, 1));
+		mainPanel.add(leftRoadPanel);
+		mainPanel.add(rightRoadPanel);
+		
+		leftRoadPanel.setLayout(layout);
+		rightRoadPanel.setLayout(layout);
+		
+		setSize(1600, 75);
 		setVisible(true);
 	}
 
 	@Override
 	public void run() {
 		while (true) {
-			road = system.getState();
-			panel.removeAll();
-			for (Place p : road) {
+			leftRoad = system.getLeftRoad();
+			rightRoad = system.getRightRoad();
+			
+			leftRoadPanel.removeAll();
+			rightRoadPanel.removeAll();
+			
+			for (Place p : leftRoad) {
 				if (!p.isFree()) {
 					JButton button = new JButton(new ImageIcon("car.jpg"));
-					panel.add(button);
+					leftRoadPanel.add(button);
 				} else {
 					JButton button = new JButton();
-					panel.add(button);
+					leftRoadPanel.add(button);
+				}
+			}
+			
+			for (Place p : rightRoad) {
+				if (!p.isFree()) {
+					JButton button = new JButton(new ImageIcon("car.jpg"));
+					rightRoadPanel.add(button);
+				} else {
+					JButton button = new JButton();
+					rightRoadPanel.add(button);
 				}
 			}
 			

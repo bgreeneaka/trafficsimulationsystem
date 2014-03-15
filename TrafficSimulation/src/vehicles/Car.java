@@ -1,7 +1,7 @@
 package vehicles;
 
 import drivers.Driver;
-import system.Place;
+import road.Place;
 
 public class Car implements Vehicle, Runnable {
 
