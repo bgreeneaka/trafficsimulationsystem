@@ -55,17 +55,6 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 		}
 	}
 
-	private void display() {
-		for (int i = 0; i < rightRoad.length; i++) {
-			if (rightRoad[i].isFree()) {
-				System.out.print("_");
-			} else {
-				System.out.print("X");
-			}
-		}
-		System.out.println("\n");
-	}
-
 	public Place[] getLeftRoad() {
 		return leftRoad;
 	}
