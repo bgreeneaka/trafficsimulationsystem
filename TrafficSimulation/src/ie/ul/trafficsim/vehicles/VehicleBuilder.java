@@ -1,7 +1,7 @@
-package vehicles;
+package ie.ul.trafficsim.vehicles;
 
-import route.Route;
-import drivers.Driver;
+import ie.ul.trafficsim.drivers.Driver;
+import ie.ul.trafficsim.route.Route;
 
 public interface VehicleBuilder {
 

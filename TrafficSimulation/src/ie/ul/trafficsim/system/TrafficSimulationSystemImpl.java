@@ -1,13 +1,13 @@
-package system;
+package ie.ul.trafficsim.system;
 
-import road.CreateRoad;
-import road.Place;
-import road.Road;
-import vehicles.Car;
-import vehicles.VehicleBuilder;
-import vehicles.VehicleBuilderImpl;
-import drivers.StandardDriver;
-import frontend.Gui;
+import ie.ul.trafficsim.drivers.StandardDriver;
+import ie.ul.trafficsim.frontend.Gui;
+import ie.ul.trafficsim.road.CreateRoad;
+import ie.ul.trafficsim.road.Place;
+import ie.ul.trafficsim.road.Road;
+import ie.ul.trafficsim.vehicles.Car;
+import ie.ul.trafficsim.vehicles.VehicleBuilder;
+import ie.ul.trafficsim.vehicles.VehicleBuilderImpl;
 
 public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 

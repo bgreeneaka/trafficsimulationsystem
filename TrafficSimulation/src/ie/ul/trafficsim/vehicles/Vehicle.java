@@ -1,7 +1,7 @@
-package vehicles;
+package ie.ul.trafficsim.vehicles;
 
-import drivers.Driver;
-import road.Place;
+import ie.ul.trafficsim.drivers.Driver;
+import ie.ul.trafficsim.road.Place;
 
 public interface Vehicle {
 

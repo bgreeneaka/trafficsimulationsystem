@@ -1,6 +1,6 @@
-package road;
+package ie.ul.trafficsim.road;
 
-import vehicles.Vehicle;
+import ie.ul.trafficsim.vehicles.Vehicle;
 
 public interface Place {
 

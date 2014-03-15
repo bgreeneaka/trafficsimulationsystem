@@ -1,9 +1,9 @@
-package vehicles;
+package ie.ul.trafficsim.vehicles;
 
-import planning.LookBackward;
-import planning.LookForward;
-import route.Route;
-import drivers.Driver;
+import ie.ul.trafficsim.drivers.Driver;
+import ie.ul.trafficsim.planning.LookBackward;
+import ie.ul.trafficsim.planning.LookForward;
+import ie.ul.trafficsim.route.Route;
 
 public class VehicleBuilderImpl implements VehicleBuilder {
 

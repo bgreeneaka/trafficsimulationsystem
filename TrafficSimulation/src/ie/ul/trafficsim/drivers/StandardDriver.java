@@ -1,7 +1,7 @@
-package drivers;
+package ie.ul.trafficsim.drivers;
 
-import planning.Look;
-import road.Place;
+import ie.ul.trafficsim.planning.Look;
+import ie.ul.trafficsim.road.Place;
 
 public class StandardDriver implements Driver {
 

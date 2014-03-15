@@ -1,6 +1,6 @@
-package system;
+package ie.ul.trafficsim.system;
 
-import road.Place;
+import ie.ul.trafficsim.road.Place;
 
 public interface TrafficSimulationSystem {
 

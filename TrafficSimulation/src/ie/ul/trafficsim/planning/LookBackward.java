@@ -1,6 +1,6 @@
-package planning;
+package ie.ul.trafficsim.planning;
 
-import road.Place;
+import ie.ul.trafficsim.road.Place;
 
 public class LookBackward implements Look {
 

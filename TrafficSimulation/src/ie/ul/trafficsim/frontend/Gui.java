@@ -1,4 +1,7 @@
-package frontend;
+package ie.ul.trafficsim.frontend;
+
+import ie.ul.trafficsim.road.Place;
+import ie.ul.trafficsim.system.TrafficSimulationSystem;
 
 import java.awt.GridLayout;
 
@@ -7,8 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import road.Place;
-import system.TrafficSimulationSystem;
 
 @SuppressWarnings("serial")
 public class Gui extends JFrame implements Runnable {

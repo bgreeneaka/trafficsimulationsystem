@@ -1,4 +1,4 @@
-package road;
+package ie.ul.trafficsim.road;
 
 public interface Road {
 
