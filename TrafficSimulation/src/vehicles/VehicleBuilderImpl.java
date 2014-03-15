@@ -18,16 +18,21 @@ public class VehicleBuilderImpl implements VehicleBuilder {
 		this.vehicle.setDriver(driver);
 		return this;
 	}
+	
+	@Override
+	public VehicleBuilder withColour(String image) {
+		this.vehicle.setImage(image);
+		return this;
+	}
 
 	@Override
 	public VehicleBuilder withRoute(Route route) {
 		// TODO Auto-generated method stub
 		return this;
 	}
-
+	
 	@Override
 	public Vehicle build() {
-		// TODO Auto-generated method stub
 		return vehicle;
-	}
+	}	
 }

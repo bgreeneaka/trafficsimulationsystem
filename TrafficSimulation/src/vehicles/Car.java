@@ -7,6 +7,9 @@ public class Car implements Vehicle, Runnable {
 
 	Place place;
 	Driver driver;
+	String image;
+
+	int count;
 
 	@Override
 	public void run() {
@@ -17,11 +20,27 @@ public class Car implements Vehicle, Runnable {
 
 	@Override
 	public synchronized void move() {
-		if (place.getNextPlace().isFree()) {
+//		if (count == 5) {
+//			place.getRightPlace().setVehicle(this);
+//			place.setVehicle(null);
+//			place = place.getRightPlace();
+//		}
+//
+//		if (count >= 5) {
+//			place.getPreviousPlace().setVehicle(this);
+//			place.setVehicle(null);
+//			place = place.getPreviousPlace();
+//			count++;
+//		} 
+//		
+//		else
+			
+			if (place.getNextPlace().isFree()) {
 			place.getNextPlace().setVehicle(this);
 			place.setVehicle(null);
 			place = place.getNextPlace();
-		} 
+			count++;
+		}
 
 		try {
 			Thread.sleep((int) (Math.random() * driver.getSpeed()));
@@ -37,5 +56,15 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public void setDriver(Driver driver) {
 		this.driver = driver;
+	}
+
+	@Override
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@Override
+	public String getImage() {
+		return image;
 	}
 }

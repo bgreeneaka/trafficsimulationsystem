@@ -37,13 +37,13 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 		for (int i = 0; i < 10; i++) {
 
 			leftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
-					.withDriver(new StandardDriver()).build());
+					.withDriver(new StandardDriver()).withColour("black_car.jpg").build());
 			leftRoad[0].getVehicle().setPlace(leftRoad[0]);
 
 			new Thread((Runnable) leftRoad[0].getVehicle()).start();
 
 			rightRoad[0].setVehicle((Car) builder.withVehicle(new Car())
-					.withDriver(new StandardDriver()).build());
+					.withDriver(new StandardDriver()).withColour("red_car.jpg").build());
 			rightRoad[0].getVehicle().setPlace(rightRoad[0]);
 
 			new Thread((Runnable) rightRoad[0].getVehicle()).start();

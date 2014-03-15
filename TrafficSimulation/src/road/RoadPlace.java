@@ -7,6 +7,8 @@ public class RoadPlace implements Place {
 	Vehicle vehicle;
 	Place nextPlace;
 	Place previousPlace;
+	Place leftPlace;
+	Place rightPlace;
 
 	@Override
 	public boolean isFree() {
@@ -41,5 +43,25 @@ public class RoadPlace implements Place {
 	@Override
 	public void setPreviousPlace(Place place) {
 		this.previousPlace = place;
+	}
+
+	@Override
+	public Place getLeftPlace() {
+		return leftPlace;
+	}
+
+	@Override
+	public Place getRightPlace() {
+		return rightPlace;
+	}
+
+	@Override
+	public void setLeftPlace(Place place) {
+		this.leftPlace = place;
+	}
+
+	@Override
+	public void setRightPlace(Place place) {
+		this.rightPlace = place;
 	}
 }

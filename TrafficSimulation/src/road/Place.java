@@ -13,8 +13,16 @@ public interface Place {
 	public Place getNextPlace();
 	
 	public Place getPreviousPlace();
+	
+	public Place getLeftPlace();
+	
+	public Place getRightPlace();
 
 	public void setNextPlace(Place place);
 	
 	public void setPreviousPlace(Place place);
+	
+	public void setLeftPlace(Place place);
+	
+	public void setRightPlace(Place place);
 }

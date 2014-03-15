@@ -11,5 +11,7 @@ public interface VehicleBuilder {
 	
 	public VehicleBuilder withRoute(Route route);
 	
+	public VehicleBuilder withColour(String image);
+	
 	public Vehicle build();
 }

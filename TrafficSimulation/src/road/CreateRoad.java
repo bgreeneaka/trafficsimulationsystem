@@ -18,6 +18,12 @@ public class CreateRoad implements Road {
 
 		rightRoad[0].setPreviousPlace(rightRoad[1]);
 		rightRoad[1].setNextPlace(rightRoad[0]);
+		
+		leftRoad[0].setRightPlace(rightRoad[0]);
+		rightRoad[0].setLeftPlace(leftRoad[0]);
+		
+		leftRoad[1].setRightPlace(rightRoad[1]);
+		rightRoad[1].setLeftPlace(leftRoad[1]);
 
 		for (int i = 2; i < leftRoad.length; i++) {
 			leftRoad[i] = new RoadPlace();
@@ -27,6 +33,9 @@ public class CreateRoad implements Road {
 			rightRoad[i] = new RoadPlace();
 			rightRoad[i - 1].setPreviousPlace(rightRoad[i]);
 			rightRoad[i].setNextPlace(rightRoad[i - 1]);
+			
+			leftRoad[i].setRightPlace(rightRoad[i]);
+			rightRoad[i].setLeftPlace(leftRoad[i]);
 		}
 
 		leftRoad[leftRoad.length - 1].setNextPlace(leftRoad[0]);
