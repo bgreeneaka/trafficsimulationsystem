@@ -49,7 +49,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 			new Thread((Runnable) rightRoad[0].getVehicle()).start();
 
 			try {
-				Thread.sleep(250);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 			}
 		}

@@ -21,7 +21,7 @@ public class Car implements Vehicle, Runnable {
 			place.getNextPlace().setVehicle(this);
 			place.setVehicle(null);
 			place = place.getNextPlace();
-		}
+		} 
 
 		try {
 			Thread.sleep((int) (Math.random() * driver.getSpeed()));

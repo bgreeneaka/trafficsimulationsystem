@@ -48,7 +48,7 @@ public class Gui extends JFrame implements Runnable {
 			
 			for (Place p : leftRoad) {
 				if (!p.isFree()) {
-					JButton button = new JButton(new ImageIcon("car.jpg"));
+					JButton button = new JButton(new ImageIcon("black_car.jpg"));
 					leftRoadPanel.add(button);
 				} else {
 					JButton button = new JButton();
@@ -58,7 +58,7 @@ public class Gui extends JFrame implements Runnable {
 			
 			for (Place p : rightRoad) {
 				if (!p.isFree()) {
-					JButton button = new JButton(new ImageIcon("car.jpg"));
+					JButton button = new JButton(new ImageIcon("red_car.jpg"));
 					rightRoadPanel.add(button);
 				} else {
 					JButton button = new JButton();
