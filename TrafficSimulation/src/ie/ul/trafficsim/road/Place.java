@@ -25,4 +25,8 @@ public interface Place {
 	public void setLeftPlace(Place place);
 	
 	public void setRightPlace(Place place);
+	
+	public boolean hasLeftPlace();
+	
+	public boolean hasRightPlace();
 }

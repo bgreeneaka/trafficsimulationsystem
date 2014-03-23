@@ -1,13 +1,15 @@
 package ie.ul.trafficsim.vehicles;
 
 import ie.ul.trafficsim.drivers.Driver;
+import ie.ul.trafficsim.movement.Move;
 import ie.ul.trafficsim.road.Place;
 
 public class Car implements Vehicle, Runnable {
 
-	Place place;
-	Driver driver;
-	String image;
+	private Place place;
+	private Driver driver;
+	private String image;
+	private Move move;
 
 	int count;
 
@@ -20,31 +22,32 @@ public class Car implements Vehicle, Runnable {
 
 	@Override
 	public synchronized void move() {
-//		if (count == 5) {
-//			place.getRightPlace().setVehicle(this);
-//			place.setVehicle(null);
-//			place = place.getRightPlace();
-//		}
-//
-//		if (count >= 5) {
-//			place.getPreviousPlace().setVehicle(this);
-//			place.setVehicle(null);
-//			place = place.getPreviousPlace();
-//			count++;
-//		} 
-//		
-//		else
-			
-	//		if (place.getNextPlace().isFree()) {
-		
+		// if (count == 5) {
+		// place.getRightPlace().setVehicle(this);
+		// place.setVehicle(null);
+		// place = place.getRightPlace();
+		// }
+		//
+		// if (count >= 5) {
+		// place.getPreviousPlace().setVehicle(this);
+		// place.setVehicle(null);
+		// place = place.getPreviousPlace();
+		// count++;
+		// }
+		//
+		// else
+
+		// if (place.getNextPlace().isFree()) {
+
 		if (driver.lookForward(place, 1)) {
-			place.getNextPlace().setVehicle(this);
-			place.setVehicle(null);
-			place = place.getNextPlace();
+			move.onePlace(place, this);
+		} else if (driver.checkLeftPath(place.getNextPlace(), 6)
+				&& driver.checkRightPath(place.getRightPlace(), 6)) {
+			System.out.println("Im gonna overtake");
 		}
 
 		try {
-			Thread.sleep((int) (Math.random() * driver.getSpeed()));
+			Thread.sleep((driver.getSpeed() + (int) (Math.random() * 100)));
 		} catch (InterruptedException e) {
 		}
 	}
@@ -67,5 +70,10 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public String getImage() {
 		return image;
+	}
+
+	@Override
+	public void setMove(Move move) {
+		this.move = move;
 	}
 }

@@ -12,7 +12,7 @@ public class RoadPlace implements Place {
 
 	@Override
 	public boolean isFree() {
-		return null == vehicle ? true : false; 	// ternary operator
+		return null == vehicle ? true : false; // ternary operator
 	}
 
 	@Override
@@ -63,5 +63,15 @@ public class RoadPlace implements Place {
 	@Override
 	public void setRightPlace(Place place) {
 		this.rightPlace = place;
+	}
+
+	@Override
+	public boolean hasLeftPlace() {
+		return null == leftPlace ? false : true;
+	}
+
+	@Override
+	public boolean hasRightPlace() {
+		return null == rightPlace ? false : true;
 	}
 }

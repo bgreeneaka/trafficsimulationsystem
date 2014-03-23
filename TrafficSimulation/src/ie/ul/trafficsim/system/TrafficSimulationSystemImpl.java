@@ -30,7 +30,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 		new Thread(new Gui(this)).start();
 
-		setupVehicles();
+		displayVehicles();
 	}
 
 	public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 		system.begin();
 	}
 
-	private void setupVehicles() {
+	private void displayVehicles() {
 		VehicleBuilder builder = new VehicleBuilderImpl();
 
 		for (int i = 0; i < 10; i++) {
