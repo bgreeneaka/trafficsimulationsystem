@@ -41,13 +41,14 @@ public class Car implements Vehicle, Runnable {
 
 		if (driver.lookForward(place, 1)) {
 			move.onePlace(place, this);
-		} else if (driver.checkLeftPath(place.getNextPlace(), 6)
-				&& driver.checkRightPath(place.getRightPlace(), 6)) {
-			System.out.println("Im gonna overtake");
+		} else if (driver.checkLeftPath(place.getNextPlace().getNextPlace(), 6)
+				&& driver.checkRightPath(place.getRightPlace().getPreviousPlace(), 6)) {
+			
 		}
 
 		try {
-			Thread.sleep((driver.getSpeed() + (int) (Math.random() * 100)));
+			Thread.sleep(//(driver.getSpeed() + (int) (Math.random() * 100)));
+					(int) (driver.getSpeed()*(Math.random())));
 		} catch (InterruptedException e) {
 		}
 	}

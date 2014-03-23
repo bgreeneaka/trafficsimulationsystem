@@ -9,7 +9,7 @@ public class CreateRoad implements Road {
 	public void create() {
 		leftRoad = new Place[100];
 		rightRoad = new Place[100];
-		
+
 		// Initialize the first 2 places in each side of the road as we need
 		// them to bootstrap the process of linking each Place to its neighbours
 		leftRoad[0] = new RoadPlace();
@@ -26,10 +26,10 @@ public class CreateRoad implements Road {
 		rightRoad[1].setNextPlace(rightRoad[0]);
 
 		leftRoad[0].setRightPlace(rightRoad[0]);
-		rightRoad[0].setLeftPlace(leftRoad[0]);
+		rightRoad[0].setRightPlace(leftRoad[0]);
 
 		leftRoad[1].setRightPlace(rightRoad[1]);
-		rightRoad[1].setLeftPlace(leftRoad[1]);
+		rightRoad[1].setRightPlace(leftRoad[1]);
 
 		// Link each Place to its neighbours
 		for (int i = 2; i < leftRoad.length; i++) {
@@ -42,10 +42,11 @@ public class CreateRoad implements Road {
 			rightRoad[i].setNextPlace(rightRoad[i - 1]);
 
 			leftRoad[i].setRightPlace(rightRoad[i]);
-			rightRoad[i].setLeftPlace(leftRoad[i]);
+			rightRoad[i].setRightPlace(leftRoad[i]);
 		}
 
-		// Setup a link between the first and last Places of each road half.
+		// Setup a link between the first and last Places of each road half so
+		// we get infinite looping road
 		leftRoad[leftRoad.length - 1].setNextPlace(leftRoad[0]);
 		leftRoad[0].setPreviousPlace(leftRoad[leftRoad.length - 1]);
 
