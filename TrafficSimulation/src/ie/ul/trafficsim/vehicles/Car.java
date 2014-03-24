@@ -29,26 +29,34 @@ public class Car implements Vehicle, Runnable {
 				&& driver.checkRightPath(place.getRightPlace()
 						.getPreviousPlace(), 5)) {
 
-			isOvertaking = true;
-			move.moveRight(place, this);
-			move.moveBackward(place, this);
+			startOvertaking();
 
 		} else if (isOvertaking) {
-			driver.setSpeed(200);
-			if (place.getPreviousPlace().isFree()) {
-				move.moveBackward(place, this);
-			}
-
-			if (place.getRightPlace().isFree()) {
-				move.moveRight(place, this);
-				isOvertaking = false;
-				driver.setSpeed(333);
-			}
+			continueOvertaking();
 		}
 
 		try {
 			Thread.sleep((int) (driver.getSpeed() * Math.random() + 250));
 		} catch (InterruptedException e) {
+		}
+	}
+
+	private void startOvertaking() {
+		isOvertaking = true;
+		move.moveRight(place, this);
+		move.moveBackward(place, this);
+	}
+
+	private void continueOvertaking() {
+		driver.setSpeed(200);
+		if (place.getPreviousPlace().isFree()) {
+			move.moveBackward(place, this);
+		}
+
+		if (place.getRightPlace().isFree()) {
+			move.moveRight(place, this);
+			isOvertaking = false;
+			driver.setSpeed(333);
 		}
 	}
 
