@@ -6,7 +6,7 @@ import ie.ul.trafficsim.road.Place;
 
 public class StandardDriver implements Driver {
 
-	private int speed = 250;
+	private int speed = 333;
 	private Look lookForward;
 	private Look lookBackward;
 	private CheckPath checkPath;
@@ -49,5 +49,10 @@ public class StandardDriver implements Driver {
 	@Override
 	public void setCheckPath(CheckPath checkPath) {
 		this.checkPath = checkPath;
+	}
+
+	@Override
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

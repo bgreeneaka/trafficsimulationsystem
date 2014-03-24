@@ -10,8 +10,7 @@ public class Car implements Vehicle, Runnable {
 	private Driver driver;
 	private String image;
 	private Move move;
-
-	int count;
+	private boolean isOvertaking;
 
 	@Override
 	public void run() {
@@ -22,33 +21,33 @@ public class Car implements Vehicle, Runnable {
 
 	@Override
 	public synchronized void move() {
-		// if (count == 5) {
-		// place.getRightPlace().setVehicle(this);
-		// place.setVehicle(null);
-		// place = place.getRightPlace();
-		// }
-		//
-		// if (count >= 5) {
-		// place.getPreviousPlace().setVehicle(this);
-		// place.setVehicle(null);
-		// place = place.getPreviousPlace();
-		// count++;
-		// }
-		//
-		// else
+		if (!isOvertaking && driver.lookForward(place, 1)) {
+			move.moveForward(place, this);
 
-		// if (place.getNextPlace().isFree()) {
+		} else if (!isOvertaking
+				&& driver.checkLeftPath(place.getNextPlace().getNextPlace(), 5)
+				&& driver.checkRightPath(place.getRightPlace()
+						.getPreviousPlace(), 5)) {
 
-		if (driver.lookForward(place, 1)) {
-			move.onePlace(place, this);
-		} else if (driver.checkLeftPath(place.getNextPlace().getNextPlace(), 6)
-				&& driver.checkRightPath(place.getRightPlace().getPreviousPlace(), 6)) {
-			
+			isOvertaking = true;
+			move.moveRight(place, this);
+			move.moveBackward(place, this);
+
+		} else if (isOvertaking) {
+			driver.setSpeed(200);
+			if (place.getPreviousPlace().isFree()) {
+				move.moveBackward(place, this);
+			}
+
+			if (place.getRightPlace().isFree()) {
+				move.moveRight(place, this);
+				isOvertaking = false;
+				driver.setSpeed(333);
+			}
 		}
 
 		try {
-			Thread.sleep(//(driver.getSpeed() + (int) (Math.random() * 100)));
-					(int) (driver.getSpeed()*(Math.random())));
+			Thread.sleep((int) (driver.getSpeed() * Math.random() + 250));
 		} catch (InterruptedException e) {
 		}
 	}

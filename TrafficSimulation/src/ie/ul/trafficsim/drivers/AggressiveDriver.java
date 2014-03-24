@@ -50,4 +50,9 @@ public class AggressiveDriver implements Driver {
 	public void setCheckPath(CheckPath checkPath) {
 		this.checkPath = checkPath;
 	}
+
+	@Override
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 }

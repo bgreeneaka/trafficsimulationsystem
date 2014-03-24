@@ -5,7 +5,11 @@ import ie.ul.trafficsim.vehicles.Vehicle;
 
 public interface Move {
 
-	public void onePlace(Place place, Vehicle vehicle);
+	public void moveForward(Place place, Vehicle vehicle);
 	
-	public void overtake(Place place, Vehicle vehicle);
+	public void moveBackward(Place place, Vehicle vehicle);
+	
+	public void moveRight(Place place, Vehicle vehicle);
+	
+	public void moveLeft(Place place, Vehicle vehicle);
 }

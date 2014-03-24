@@ -8,6 +8,8 @@ public interface Driver {
 
 	public int getSpeed();
 	
+	public void setSpeed(int speed);
+	
 	public boolean lookForward(Place place, int numberOfPlaces);
 	
 	public boolean lookBackward(Place place, int numberOfPlaces);
