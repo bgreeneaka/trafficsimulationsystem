@@ -26,6 +26,11 @@ public class AggressiveDriver implements Driver {
 	}
 	
 	@Override
+	public boolean lookRight(Place place) {
+		return look.right(place);
+	}
+	
+	@Override
 	public boolean checkLeftPath(Place place, int numberOfPlaces) {
 		return checkPath.checkLeftPath(place, numberOfPlaces);
 	}
@@ -49,4 +54,5 @@ public class AggressiveDriver implements Driver {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+
 }

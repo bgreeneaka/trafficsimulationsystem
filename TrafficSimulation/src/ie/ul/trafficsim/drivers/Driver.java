@@ -14,6 +14,8 @@ public interface Driver {
 	
 	public boolean lookBackward(Place place, int numberOfPlaces);
 	
+	public boolean lookRight(Place place);
+	
 	public boolean checkLeftPath(Place place, int numberOfPlaces);
 	
 	public boolean checkRightPath(Place place, int numberOfPlaces);

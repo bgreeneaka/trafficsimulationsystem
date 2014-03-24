@@ -52,7 +52,7 @@ public class Car implements Vehicle, Runnable {
 			move.moveBackward(place, this);
 		}
 
-		if (place.getRightPlace().isFree()) {
+		if (driver.lookRight(place)) {
 			move.moveRight(place, this);
 			isOvertaking = false;
 			driver.setSpeed(333);
