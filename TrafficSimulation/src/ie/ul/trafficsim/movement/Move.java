@@ -5,11 +5,11 @@ import ie.ul.trafficsim.vehicles.Vehicle;
 
 public interface Move {
 
-	public void moveForward(Place place, Vehicle vehicle);
+	public void forward(Place place, Vehicle vehicle);
 	
-	public void moveBackward(Place place, Vehicle vehicle);
+	public void backward(Place place, Vehicle vehicle);
 	
-	public void moveRight(Place place, Vehicle vehicle);
+	public void right(Place place, Vehicle vehicle);
 	
-	public void moveLeft(Place place, Vehicle vehicle);
+	public void left(Place place, Vehicle vehicle);
 }

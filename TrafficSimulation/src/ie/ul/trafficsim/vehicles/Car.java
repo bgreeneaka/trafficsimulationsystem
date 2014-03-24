@@ -22,7 +22,7 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public synchronized void move() {
 		if (!isOvertaking && driver.lookForward(place, 1)) {
-			move.moveForward(place, this);
+			move.forward(place, this);
 
 		} else if (!isOvertaking
 				&& driver.checkLeftPath(place.getNextPlace().getNextPlace(), 5)
@@ -35,25 +35,25 @@ public class Car implements Vehicle, Runnable {
 		}
 
 		try {
-			Thread.sleep((int) (driver.getSpeed() * Math.random() + 250));
+			Thread.sleep((int) ((driver.getSpeed() * Math.random()) + 250));
 		} catch (InterruptedException e) {
 		}
 	}
 
 	private void startOvertaking() {
 		isOvertaking = true;
-		move.moveRight(place, this);
-		move.moveBackward(place, this);
+		move.right(place, this);
+		move.backward(place, this);
 	}
 
 	private void continueOvertaking() {
 		driver.setSpeed(200);
 		if (driver.lookBackward(place, 1)) {
-			move.moveBackward(place, this);
+			move.backward(place, this);
 		}
 
 		if (driver.lookRight(place)) {
-			move.moveRight(place, this);
+			move.right(place, this);
 			isOvertaking = false;
 			driver.setSpeed(333);
 		}
