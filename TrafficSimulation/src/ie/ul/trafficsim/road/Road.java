@@ -7,4 +7,6 @@ public interface Road {
 	public Place[] getLeftRoad();
 	
 	public Place[] getRightRoad();
+	
+	
 }

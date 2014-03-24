@@ -52,8 +52,20 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 			westRightRoad[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver()).withColour("red_car.jpg").build());
 			westRightRoad[0].getVehicle().setPlace(westRightRoad[0]);
-
+			
 			new Thread((Runnable) westRightRoad[0].getVehicle()).start();
+			
+			southLeftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
+					.withDriver(new StandardDriver()).withColour("red_car.jpg").build());
+			southLeftRoad[0].getVehicle().setPlace(southLeftRoad[0]);
+			
+			new Thread((Runnable) southLeftRoad[0].getVehicle()).start();
+			
+			southRightRoad[0].setVehicle((Car) builder.withVehicle(new Car())
+					.withDriver(new StandardDriver()).withColour("red_car.jpg").build());
+			southRightRoad[0].getVehicle().setPlace(southRightRoad[0]);
+			
+			new Thread((Runnable) southRightRoad[0].getVehicle()).start();
 
 			try {
 				Thread.sleep(250);
@@ -61,13 +73,25 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 			}
 		}
 	}
-
-	public Place[] getLeftRoad() {
+	@Override
+	public Place[] getWestLeftRoad() {
 		return westLeftRoad;
 	}
 
 	@Override
-	public Place[] getRightRoad() {
+	public Place[] getWestRightRoad() {
 		return westRightRoad;
 	}
+	
+	
+	@Override
+	public Place[] getSouthLeftRoad() {
+		return southLeftRoad;
+	}
+	
+	@Override
+	public Place[] getSouthRightRoad() {
+		return southRightRoad;
+	}
+	
 }
