@@ -18,9 +18,7 @@ public interface Driver {
 	
 	public boolean checkRightPath(Place place, int numberOfPlaces);
 	
-	public void setLookForward(Look look);
-	
-	public void setLookBackward(Look look);
+	public void setLook(Look look);
 	
 	public void setCheckPath(CheckPath checkPath);
 }

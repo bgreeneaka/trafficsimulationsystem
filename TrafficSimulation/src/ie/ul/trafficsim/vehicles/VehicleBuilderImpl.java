@@ -3,8 +3,7 @@ package ie.ul.trafficsim.vehicles;
 import ie.ul.trafficsim.drivers.Driver;
 import ie.ul.trafficsim.movement.MoveImpl;
 import ie.ul.trafficsim.planning.CheckPathImpl;
-import ie.ul.trafficsim.planning.LookBackward;
-import ie.ul.trafficsim.planning.LookForward;
+import ie.ul.trafficsim.planning.LookImpl;
 import ie.ul.trafficsim.route.Route;
 
 public class VehicleBuilderImpl implements VehicleBuilder {
@@ -20,10 +19,8 @@ public class VehicleBuilderImpl implements VehicleBuilder {
 
 	@Override
 	public VehicleBuilder withDriver(Driver driver) {
-		driver.setLookForward(new LookForward());
-		driver.setLookBackward(new LookBackward());
-		driver.setCheckPath(new CheckPathImpl(new LookForward(),
-				new LookBackward()));
+		driver.setLook(new LookImpl());
+		driver.setCheckPath(new CheckPathImpl(new LookImpl()));
 		this.vehicle.setDriver(driver);
 		return this;
 	}

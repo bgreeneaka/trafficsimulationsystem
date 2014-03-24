@@ -7,8 +7,7 @@ import ie.ul.trafficsim.road.Place;
 public class AggressiveDriver implements Driver {
 
 	private int speed = 100;
-	private Look lookForward;
-	private Look lookBackward;
+	private Look look;
 	private CheckPath checkPath;
 
 	@Override
@@ -18,12 +17,12 @@ public class AggressiveDriver implements Driver {
 
 	@Override
 	public boolean lookForward(Place place, int numberOfPlaces) {
-		return lookForward.look(place, numberOfPlaces);
+		return look.forward(place, numberOfPlaces);
 	}
 
 	@Override
 	public boolean lookBackward(Place place, int numberOfPlaces) {
-		return lookBackward.look(place, numberOfPlaces);
+		return look.backward(place, numberOfPlaces);
 	}
 	
 	@Override
@@ -37,15 +36,10 @@ public class AggressiveDriver implements Driver {
 	}
 
 	@Override
-	public void setLookForward(Look look) {
-		this.lookForward = look;
+	public void setLook(Look look) {
+		this.look = look; 
 	}
-
-	@Override
-	public void setLookBackward(Look look) {
-		this.lookBackward = look;
-	}
-
+	
 	@Override
 	public void setCheckPath(CheckPath checkPath) {
 		this.checkPath = checkPath;

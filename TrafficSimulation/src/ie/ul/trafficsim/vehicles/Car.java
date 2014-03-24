@@ -26,8 +26,7 @@ public class Car implements Vehicle, Runnable {
 
 		} else if (!isOvertaking
 				&& driver.checkLeftPath(place.getNextPlace().getNextPlace(), 5)
-				&& driver.checkRightPath(place.getRightPlace()
-						.getPreviousPlace(), 5)) {
+				&& driver.checkRightPath(place.getRightPlace(), 6)) {
 
 			startOvertaking();
 
@@ -49,7 +48,7 @@ public class Car implements Vehicle, Runnable {
 
 	private void continueOvertaking() {
 		driver.setSpeed(200);
-		if (place.getPreviousPlace().isFree()) {
+		if (driver.lookBackward(place, 1)) {
 			move.moveBackward(place, this);
 		}
 
