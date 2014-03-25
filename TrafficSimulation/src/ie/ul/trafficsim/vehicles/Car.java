@@ -29,43 +29,15 @@ public class Car implements Vehicle, Runnable {
 				&& driver.checkRightPath(place.getRightPlace(), 7)
 				&& driver.checkLeftPath(place.getRightPlace(), 7)) {
 
-			startOvertaking();
+			move.startOvertaking(place, this);
 
 		} else if (isOvertaking) {
-			continueOvertaking();
+			move.continueOvertaking(place, this, driver);
 		}
 
 		try {
 			Thread.sleep((int) ((driver.getSpeed() * Math.random()) + 250));
 		} catch (InterruptedException e) {
-		}
-	}
-
-	private void startOvertaking() {
-		System.out.println("starting overtaking");
-		isOvertaking = true;
-		move.right(place, this);
-		move.backward(place, this);
-	}
-
-	private void continueOvertaking() {
-		System.out.println("continuing to overtake");
-		driver.setSpeed(150);
-
-		if (!driver.checkRightPath(place.getPreviousPlace(), 7)) {
-			System.out.println("slowing down");
-			driver.setSpeed(666);
-		}
-
-		if (driver.lookBackward(place, 1)) {
-			move.backward(place, this);
-		}
-
-		if (driver.lookRight(place)) {
-			move.right(place, this);
-			isOvertaking = false;
-			System.out.println("normal speed");
-			driver.setSpeed(333);
 		}
 	}
 
@@ -92,5 +64,15 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public void setMove(Move move) {
 		this.move = move;
+	}
+
+	@Override
+	public void setOvertaking(boolean b) {
+		this.isOvertaking = b;
+	}
+
+	@Override
+	public Place getPlace() {
+		return place;
 	}
 }

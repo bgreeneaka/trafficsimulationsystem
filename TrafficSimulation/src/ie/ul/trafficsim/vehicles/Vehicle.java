@@ -10,6 +10,8 @@ public interface Vehicle {
 	
 	public void setPlace(Place place);
 	
+	public Place getPlace();
+	
 	public void setDriver(Driver driver);
 	
 	public void setMove(Move move);
@@ -17,4 +19,6 @@ public interface Vehicle {
 	public void setImage(String image);
 	
 	public String getImage();
+
+	public void setOvertaking(boolean b);
 }
