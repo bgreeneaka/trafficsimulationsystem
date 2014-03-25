@@ -71,7 +71,7 @@ public class Gui extends JFrame implements Runnable {
 			validate();
 
 			try {
-				Thread.sleep(250);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 			}
 		}

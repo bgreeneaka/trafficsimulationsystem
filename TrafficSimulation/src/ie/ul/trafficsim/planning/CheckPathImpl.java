@@ -26,7 +26,6 @@ public class CheckPathImpl implements CheckPath {
 			if (!look.forward(place, i)) {
 				return false;
 			}
-			place = place.getNextPlace();
 		}
 		return true;
 	}
