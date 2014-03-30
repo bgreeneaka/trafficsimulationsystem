@@ -54,15 +54,15 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 			new Thread((Runnable) westLeftRoad[0].getVehicle()).start();
 
-			westRightRoad[westRightRoad.length - 1].setVehicle((Car) builder
+			eastRightRoad[eastRightRoad.length - 1].setVehicle((Car) builder
 					.withVehicle(new Car()).withDriver(new StandardDriver())
 					.withColour("red_car.jpg").build());
 
-			westRightRoad[westRightRoad.length - 1].getVehicle().setPlace(
-					westRightRoad[westRightRoad.length - 1]);
+			eastRightRoad[eastRightRoad.length - 1].getVehicle().setPlace(
+					eastRightRoad[eastRightRoad.length - 1]);
 
 			new Thread(
-					(Runnable) westRightRoad[westRightRoad.length - 1]
+					(Runnable) eastRightRoad[eastRightRoad.length - 1]
 							.getVehicle()).start();
 
 			try {
@@ -122,18 +122,29 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 		// North South Road Link Loop
 		southLeftRoad[southLeftRoad.length - 1].setNextPlace(northLeftRoad[0]);
-		northLeftRoad[0].setPreviousPlace(southLeftRoad[southLeftRoad.length - 1]);
+		northLeftRoad[0]
+				.setPreviousPlace(southLeftRoad[southLeftRoad.length - 1]);
 
-		southLeftRoad[0].setPreviousPlace(northLeftRoad[northLeftRoad.length - 1]);
+		southLeftRoad[0]
+				.setPreviousPlace(northLeftRoad[northLeftRoad.length - 1]);
 		northLeftRoad[southLeftRoad.length - 1].setNextPlace(southLeftRoad[0]);
 
-		southRightRoad[0].setNextPlace(northRightRoad[northRightRoad.length - 1]);
+		southRightRoad[0]
+				.setNextPlace(northRightRoad[northRightRoad.length - 1]);
 		northRightRoad[northRightRoad.length - 1]
 				.setPreviousPlace(southRightRoad[0]);
 
 		southRightRoad[southRightRoad.length - 1]
 				.setPreviousPlace(northRightRoad[0]);
-		northRightRoad[0].setNextPlace(southRightRoad[southRightRoad.length - 1]);
+		northRightRoad[0]
+				.setNextPlace(southRightRoad[southRightRoad.length - 1]);
+
+		// Link north south to east west
+		westLeftRoad[westLeftRoad.length - 1].setLeftPlace(northLeftRoad[0]);
+		southLeftRoad[southLeftRoad.length-1].setLeftPlace(westRightRoad[westRightRoad.length - 1]);
+		
+		eastRightRoad[0].setLeftPlace(southRightRoad[southRightRoad.length-1]);
+		northRightRoad[0].setLeftPlace(eastLeftRoad[0]);
 	}
 
 	@Override

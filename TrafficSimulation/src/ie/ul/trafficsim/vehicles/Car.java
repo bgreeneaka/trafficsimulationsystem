@@ -22,7 +22,11 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public synchronized void move() {
 		if (!isOvertaking && driver.lookForward(place, 1)) {
-			move.forward(place, this);
+			if (place.hasLeftPlace() && driver.lookLeft(place)) {
+				move.turnLeft(place, this);
+			} else {
+				move.forward(place, this);
+			}
 
 		} else if (!isOvertaking
 				&& driver.checkLeftPath(place.getNextPlace().getNextPlace(), 3)

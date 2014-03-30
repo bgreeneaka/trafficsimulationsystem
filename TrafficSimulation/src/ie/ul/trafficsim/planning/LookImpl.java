@@ -24,4 +24,9 @@ public class LookImpl implements Look {
 	public boolean right(Place place) {
 		return place.getRightPlace().isFree();
 	}
+	
+	@Override
+	public boolean left(Place place) {
+		return place.getLeftPlace().isFree();
+	}
 }

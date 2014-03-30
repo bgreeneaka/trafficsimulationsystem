@@ -9,4 +9,6 @@ public interface Look {
 	public boolean backward(Place place, int numberOfPlaces);
 	
 	public boolean right(Place place);
+
+	public boolean left(Place place);
 }

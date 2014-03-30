@@ -31,6 +31,11 @@ public class StandardDriver implements Driver {
 	}
 	
 	@Override
+	public boolean lookLeft(Place place) {
+		return look.left(place);
+	}
+	
+	@Override
 	public boolean checkLeftPath(Place place, int numberOfPlaces) {
 		return checkPath.checkLeftPath(place, numberOfPlaces);
 	}
@@ -54,5 +59,4 @@ public class StandardDriver implements Driver {
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
-
 }
