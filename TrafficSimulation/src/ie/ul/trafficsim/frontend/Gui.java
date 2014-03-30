@@ -29,26 +29,46 @@ public class Gui extends JFrame implements Runnable {
 	private JPanel westRightRoadPanel = new JPanel();
 	private JPanel eastLeftRoadPanel = new JPanel();
 	private JPanel eastRightRoadPanel = new JPanel();
+	private JPanel northLeftRoadPanel = new JPanel();
+	private JPanel northRightRoadPanel = new JPanel();
+	private JPanel southLeftRoadPanel = new JPanel();
+	private JPanel southRightRoadPanel = new JPanel();
 
 	public Gui(TrafficSimulationSystem system) {
 		westLeftRoad = system.getRoadLayout().get("westLeftRoad");
 		westRightRoad = system.getRoadLayout().get("westRightRoad");
 		eastLeftRoad = system.getRoadLayout().get("eastLeftRoad");
 		eastRightRoad = system.getRoadLayout().get("eastRightRoad");
+		northLeftRoad = system.getRoadLayout().get("northLeftRoad");
+		northRightRoad = system.getRoadLayout().get("northRightRoad");
+		southLeftRoad = system.getRoadLayout().get("southLeftRoad");
+		southRightRoad = system.getRoadLayout().get("southRightRoad");
 
 		add(mainPanel);
-		mainPanel.setLayout(new GridLayout(2, 2));
+		mainPanel.setLayout(new GridLayout(6, 2));
+		mainPanel.add(northLeftRoadPanel);
+		mainPanel.add(new JLabel("North Left Road"));
+		mainPanel.add(northRightRoadPanel);
+		mainPanel.add(new JLabel("North Right Road"));
 		mainPanel.add(westLeftRoadPanel);
 		mainPanel.add(eastLeftRoadPanel);
 		mainPanel.add(westRightRoadPanel);
 		mainPanel.add(eastRightRoadPanel);
+		mainPanel.add(southLeftRoadPanel);
+		mainPanel.add(new JLabel("South Left Road"));
+		mainPanel.add(southRightRoadPanel);
+		mainPanel.add(new JLabel("South Right Road"));
 
 		westLeftRoadPanel.setLayout(roadGridLayout);
 		westRightRoadPanel.setLayout(roadGridLayout);
 		eastLeftRoadPanel.setLayout(roadGridLayout);
 		eastRightRoadPanel.setLayout(roadGridLayout);
+		northLeftRoadPanel.setLayout(roadGridLayout);
+		northRightRoadPanel.setLayout(roadGridLayout);
+		southLeftRoadPanel.setLayout(roadGridLayout);
+		southRightRoadPanel.setLayout(roadGridLayout);
 
-		setSize(1600, 75);
+		setSize(1600, 150);
 		setVisible(true);
 		setLocationRelativeTo(null);
 	}
@@ -60,6 +80,10 @@ public class Gui extends JFrame implements Runnable {
 			westRightRoadPanel.removeAll();
 			eastLeftRoadPanel.removeAll();
 			eastRightRoadPanel.removeAll();
+			northLeftRoadPanel.removeAll();
+			northRightRoadPanel.removeAll();
+			southLeftRoadPanel.removeAll();
+			southRightRoadPanel.removeAll();
 
 			for (Place p : westLeftRoad) {
 				if (!p.isFree()) {
@@ -82,7 +106,7 @@ public class Gui extends JFrame implements Runnable {
 					westRightRoadPanel.add(label);
 				}
 			}
-			
+
 			for (Place p : eastLeftRoad) {
 				if (!p.isFree()) {
 					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
@@ -102,6 +126,50 @@ public class Gui extends JFrame implements Runnable {
 				} else {
 					JLabel label = new JLabel();
 					eastRightRoadPanel.add(label);
+				}
+			}
+			
+			for (Place p : northLeftRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					northLeftRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					northLeftRoadPanel.add(label);
+				}
+			}
+
+			for (Place p : northRightRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					northRightRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					northRightRoadPanel.add(label);
+				}
+			}
+
+			for (Place p : southLeftRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					southLeftRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					southLeftRoadPanel.add(label);
+				}
+			}
+
+			for (Place p : southRightRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					southRightRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					southRightRoadPanel.add(label);
 				}
 			}
 

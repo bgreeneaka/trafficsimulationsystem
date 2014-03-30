@@ -105,7 +105,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 	}
 
 	private void setupRoadLinks() {
-		// West East Road Links
+		// West East Road Link Loop
 		westLeftRoad[westLeftRoad.length - 1].setNextPlace(eastLeftRoad[0]);
 		eastLeftRoad[0].setPreviousPlace(westLeftRoad[westLeftRoad.length - 1]);
 
@@ -119,6 +119,21 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 		westRightRoad[westRightRoad.length - 1]
 				.setPreviousPlace(eastRightRoad[0]);
 		eastRightRoad[0].setNextPlace(westRightRoad[westRightRoad.length - 1]);
+
+		// North South Road Link Loop
+		southLeftRoad[southLeftRoad.length - 1].setNextPlace(northLeftRoad[0]);
+		northLeftRoad[0].setPreviousPlace(southLeftRoad[southLeftRoad.length - 1]);
+
+		southLeftRoad[0].setPreviousPlace(northLeftRoad[northLeftRoad.length - 1]);
+		northLeftRoad[southLeftRoad.length - 1].setNextPlace(southLeftRoad[0]);
+
+		southRightRoad[0].setNextPlace(northRightRoad[northRightRoad.length - 1]);
+		northRightRoad[northRightRoad.length - 1]
+				.setPreviousPlace(southRightRoad[0]);
+
+		southRightRoad[southRightRoad.length - 1]
+				.setPreviousPlace(northRightRoad[0]);
+		northRightRoad[0].setNextPlace(southRightRoad[southRightRoad.length - 1]);
 	}
 
 	@Override
