@@ -68,15 +68,19 @@ public class Gui extends JFrame implements Runnable {
 		roads.add(southRightRoad);
 
 		add(mainPanel);
-		mainPanel.setLayout(new GridLayout(6, 2));
+		mainPanel.setLayout(new GridLayout(8, 2));
 		mainPanel.add(new JLabel("North Left Road", JLabel.RIGHT));
 		mainPanel.add(northLeftRoadPanel);
 		mainPanel.add(new JLabel("North Right Road", JLabel.RIGHT));
 		mainPanel.add(northRightRoadPanel);
+		mainPanel.add(new JLabel());
+		mainPanel.add(new JLabel());
 		mainPanel.add(westLeftRoadPanel);
 		mainPanel.add(eastLeftRoadPanel);
 		mainPanel.add(westRightRoadPanel);
 		mainPanel.add(eastRightRoadPanel);
+		mainPanel.add(new JLabel());
+		mainPanel.add(new JLabel());
 		mainPanel.add(southLeftRoadPanel);
 		mainPanel.add(new JLabel("South Left Road"));
 		mainPanel.add(southRightRoadPanel);

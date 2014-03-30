@@ -22,13 +22,14 @@ public class Car implements Vehicle, Runnable {
 	@Override
 	public synchronized void move() {
 		int rand = (int) (Math.random() * 100);
+		int randMod = (int) (Math.random() * 5) + 1;
 
-		if (rand % 2 == 0) {
+		if (rand % randMod == 0) {
 			if (place.hasLeftPlace() && driver.lookLeft(place)) {
 				move.turnLeft(place, this);
 			}
-		} 
-		
+		}
+
 		if (!isOvertaking && driver.lookForward(place, 1)) {
 			move.forward(place, this);
 		}

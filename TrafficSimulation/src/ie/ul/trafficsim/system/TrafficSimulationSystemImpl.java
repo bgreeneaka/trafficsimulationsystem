@@ -65,6 +65,25 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 					(Runnable) eastRightRoad[eastRightRoad.length - 1]
 							.getVehicle()).start();
 
+			southLeftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
+					.withDriver(new StandardDriver())
+					.withColour("green_car.jpg").build());
+
+			southLeftRoad[0].getVehicle().setPlace(southLeftRoad[0]);
+
+			new Thread((Runnable) southLeftRoad[0].getVehicle()).start();
+
+			northRightRoad[northRightRoad.length - 1].setVehicle((Car) builder
+					.withVehicle(new Car()).withDriver(new StandardDriver())
+					.withColour("yellow_car.jpg").build());
+
+			northRightRoad[northRightRoad.length - 1].getVehicle().setPlace(
+					northRightRoad[northRightRoad.length - 1]);
+
+			new Thread(
+					(Runnable) northRightRoad[northRightRoad.length - 1]
+							.getVehicle()).start();
+
 			try {
 				Thread.sleep(250);
 			} catch (InterruptedException e) {
@@ -141,9 +160,11 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 
 		// Link north south to east west
 		westLeftRoad[westLeftRoad.length - 1].setLeftPlace(northLeftRoad[0]);
-		southLeftRoad[southLeftRoad.length-1].setLeftPlace(westRightRoad[westRightRoad.length - 1]);
-		
-		eastRightRoad[0].setLeftPlace(southRightRoad[southRightRoad.length-1]);
+		southLeftRoad[southLeftRoad.length - 1]
+				.setLeftPlace(westRightRoad[westRightRoad.length - 1]);
+
+		eastRightRoad[0]
+				.setLeftPlace(southRightRoad[southRightRoad.length - 1]);
 		northRightRoad[0].setLeftPlace(eastLeftRoad[0]);
 	}
 
