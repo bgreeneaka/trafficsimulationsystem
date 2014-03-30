@@ -4,6 +4,8 @@ import ie.ul.trafficsim.road.Place;
 import ie.ul.trafficsim.system.TrafficSimulationSystem;
 
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -22,6 +24,9 @@ public class Gui extends JFrame implements Runnable {
 	private Place[] northLeftRoad;
 	private Place[] northRightRoad;
 
+	private List<Place[]> roads = new ArrayList<>();
+	private List<JPanel> roadPanels = new ArrayList<>();
+
 	private GridLayout roadGridLayout = new GridLayout(1, 100);
 
 	private JPanel mainPanel = new JPanel();
@@ -35,6 +40,15 @@ public class Gui extends JFrame implements Runnable {
 	private JPanel southRightRoadPanel = new JPanel();
 
 	public Gui(TrafficSimulationSystem system) {
+		roadPanels.add(westLeftRoadPanel);
+		roadPanels.add(westRightRoadPanel);
+		roadPanels.add(eastLeftRoadPanel);
+		roadPanels.add(eastRightRoadPanel);
+		roadPanels.add(northLeftRoadPanel);
+		roadPanels.add(northRightRoadPanel);
+		roadPanels.add(southLeftRoadPanel);
+		roadPanels.add(southRightRoadPanel);
+
 		westLeftRoad = system.getRoadLayout().get("westLeftRoad");
 		westRightRoad = system.getRoadLayout().get("westRightRoad");
 		eastLeftRoad = system.getRoadLayout().get("eastLeftRoad");
@@ -43,6 +57,15 @@ public class Gui extends JFrame implements Runnable {
 		northRightRoad = system.getRoadLayout().get("northRightRoad");
 		southLeftRoad = system.getRoadLayout().get("southLeftRoad");
 		southRightRoad = system.getRoadLayout().get("southRightRoad");
+		
+		roads.add(westLeftRoad);
+		roads.add(westRightRoad);
+		roads.add(eastLeftRoad);
+		roads.add(eastRightRoad);
+		roads.add(northLeftRoad);
+		roads.add(northRightRoad);
+		roads.add(southLeftRoad);
+		roads.add(southRightRoad);
 
 		add(mainPanel);
 		mainPanel.setLayout(new GridLayout(6, 2));
@@ -59,14 +82,9 @@ public class Gui extends JFrame implements Runnable {
 		mainPanel.add(southRightRoadPanel);
 		mainPanel.add(new JLabel("South Right Road"));
 
-		westLeftRoadPanel.setLayout(roadGridLayout);
-		westRightRoadPanel.setLayout(roadGridLayout);
-		eastLeftRoadPanel.setLayout(roadGridLayout);
-		eastRightRoadPanel.setLayout(roadGridLayout);
-		northLeftRoadPanel.setLayout(roadGridLayout);
-		northRightRoadPanel.setLayout(roadGridLayout);
-		southLeftRoadPanel.setLayout(roadGridLayout);
-		southRightRoadPanel.setLayout(roadGridLayout);
+		for (JPanel panel : roadPanels) {
+			panel.setLayout(roadGridLayout);
+		}
 
 		setSize(1600, 150);
 		setVisible(true);
@@ -76,107 +94,24 @@ public class Gui extends JFrame implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			westLeftRoadPanel.removeAll();
-			westRightRoadPanel.removeAll();
-			eastLeftRoadPanel.removeAll();
-			eastRightRoadPanel.removeAll();
-			northLeftRoadPanel.removeAll();
-			northRightRoadPanel.removeAll();
-			southLeftRoadPanel.removeAll();
-			southRightRoadPanel.removeAll();
+			int i = 0;
+			for (JPanel panel : roadPanels) {
+				panel.removeAll();
 
-			for (Place p : westLeftRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					westLeftRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					westLeftRoadPanel.add(label);
+				for (Place place : roads.get(i)) {
+					if (!place.isFree()) {
+						panel.add(new JLabel(new ImageIcon(place.getVehicle().getImage())));
+					} else {
+						panel.add(new JLabel());
+					}
 				}
-			}
-
-			for (Place p : westRightRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					westRightRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					westRightRoadPanel.add(label);
-				}
-			}
-
-			for (Place p : eastLeftRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					eastLeftRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					eastLeftRoadPanel.add(label);
-				}
-			}
-
-			for (Place p : eastRightRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					eastRightRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					eastRightRoadPanel.add(label);
-				}
-			}
-			
-			for (Place p : northLeftRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					northLeftRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					northLeftRoadPanel.add(label);
-				}
-			}
-
-			for (Place p : northRightRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					northRightRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					northRightRoadPanel.add(label);
-				}
-			}
-
-			for (Place p : southLeftRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					southLeftRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					southLeftRoadPanel.add(label);
-				}
-			}
-
-			for (Place p : southRightRoad) {
-				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
-							.getImage()));
-					southRightRoadPanel.add(label);
-				} else {
-					JLabel label = new JLabel();
-					southRightRoadPanel.add(label);
-				}
+				i++;
 			}
 
 			validate();
 
 			try {
-				Thread.sleep(500);
+				Thread.sleep(250);
 			} catch (InterruptedException e) {
 			}
 		}
