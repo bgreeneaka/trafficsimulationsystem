@@ -2,13 +2,14 @@ package ie.ul.trafficsim.road;
 
 public class CreateRoad implements Road {
 
-	Place[] leftRoad;
-	Place[] rightRoad;
+	private Place[] leftRoad;
+	private Place[] rightRoad;
+	private int roadLength = 100;
 
 	@Override
 	public void create() {
-		leftRoad = new Place[25];
-		rightRoad = new Place[25];
+		leftRoad = new Place[roadLength];
+		rightRoad = new Place[roadLength];
 
 		// Initialize the first 2 places in each side of the road as we need
 		// them to bootstrap the process of linking each Place to its neighbours

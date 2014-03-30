@@ -44,7 +44,7 @@ public class TrafficSimulationSystemImpl implements TrafficSimulationSystem {
 	private void setupVehicles() {
 		VehicleBuilder builder = new VehicleBuilderImpl();
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 40; i++) {
 
 			westLeftRoad[0].setVehicle((Car) builder.withVehicle(new Car())
 					.withDriver(new StandardDriver())
