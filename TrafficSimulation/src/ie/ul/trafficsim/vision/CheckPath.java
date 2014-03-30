@@ -1,4 +1,4 @@
-package ie.ul.trafficsim.planning;
+package ie.ul.trafficsim.vision;
 
 import ie.ul.trafficsim.road.Place;
 

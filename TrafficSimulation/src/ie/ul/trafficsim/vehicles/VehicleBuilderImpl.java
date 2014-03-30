@@ -2,9 +2,9 @@ package ie.ul.trafficsim.vehicles;
 
 import ie.ul.trafficsim.drivers.Driver;
 import ie.ul.trafficsim.movement.MoveImpl;
-import ie.ul.trafficsim.planning.CheckPathImpl;
-import ie.ul.trafficsim.planning.LookImpl;
 import ie.ul.trafficsim.route.Route;
+import ie.ul.trafficsim.vision.CheckPathImpl;
+import ie.ul.trafficsim.vision.LookImpl;
 
 public class VehicleBuilderImpl implements VehicleBuilder {
 

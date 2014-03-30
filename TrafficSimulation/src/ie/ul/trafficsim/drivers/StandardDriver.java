@@ -1,8 +1,8 @@
 package ie.ul.trafficsim.drivers;
 
-import ie.ul.trafficsim.planning.CheckPath;
-import ie.ul.trafficsim.planning.Look;
 import ie.ul.trafficsim.road.Place;
+import ie.ul.trafficsim.vision.CheckPath;
+import ie.ul.trafficsim.vision.Look;
 
 public class StandardDriver implements Driver {
 
