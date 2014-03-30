@@ -4,7 +4,7 @@ public class CreateRoad implements Road {
 
 	private Place[] leftRoad;
 	private Place[] rightRoad;
-	private int roadLength = 100;
+	private int roadLength = 20;
 
 	@Override
 	public void create() {
