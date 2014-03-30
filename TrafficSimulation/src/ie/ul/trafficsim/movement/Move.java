@@ -10,9 +10,9 @@ public interface Move {
 	
 	public void backward(Place place, Vehicle vehicle);
 	
-	public void right(Place place, Vehicle vehicle);
+	public void switchLane(Place place, Vehicle vehicle);
 	
-	public void left(Place place, Vehicle vehicle);
+	public void turnLeft(Place place, Vehicle vehicle);
 
 	public void startOvertaking(Place place, Vehicle vehicle);
 

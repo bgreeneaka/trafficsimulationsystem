@@ -7,8 +7,8 @@ public class CreateRoad implements Road {
 
 	@Override
 	public void create() {
-		leftRoad = new Place[100];
-		rightRoad = new Place[100];
+		leftRoad = new Place[25];
+		rightRoad = new Place[25];
 
 		// Initialize the first 2 places in each side of the road as we need
 		// them to bootstrap the process of linking each Place to its neighbours

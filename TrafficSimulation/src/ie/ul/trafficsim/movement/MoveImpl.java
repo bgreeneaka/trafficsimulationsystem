@@ -21,14 +21,14 @@ public class MoveImpl implements Move {
 	}
 
 	@Override
-	public void right(Place place, Vehicle vehicle) {
+	public void switchLane(Place place, Vehicle vehicle) {
 		place.getRightPlace().setVehicle(vehicle);
 		place.setVehicle(null);
 		vehicle.setPlace(place.getRightPlace());
 	}
 
 	@Override
-	public void left(Place place, Vehicle vehicle) {
+	public void turnLeft(Place place, Vehicle vehicle) {
 		place.getLeftPlace().setVehicle(vehicle);
 		place.setVehicle(null);
 		vehicle.setPlace(place.getLeftPlace());
@@ -38,7 +38,7 @@ public class MoveImpl implements Move {
 	public void startOvertaking(Place place, Vehicle vehicle) {
 		System.out.println("starting overtaking");
 		vehicle.setOvertaking(true);
-		right(place, vehicle);
+		switchLane(place, vehicle);
 		backward(vehicle.getPlace(), vehicle);
 	}
 	
@@ -57,7 +57,7 @@ public class MoveImpl implements Move {
 		}
 
 		if (driver.lookRight(vehicle.getPlace())) {
-			right(vehicle.getPlace(), vehicle);
+			switchLane(vehicle.getPlace(), vehicle);
 			vehicle.setOvertaking(false);
 			System.out.println("normal speed");
 			driver.setSpeed(333);

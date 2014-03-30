@@ -10,30 +10,44 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 @SuppressWarnings("serial")
 public class Gui extends JFrame implements Runnable {
 
-	private TrafficSimulationSystem system;
-	private Place[] leftRoad;
-	private Place[] rightRoad;
+	private Place[] westLeftRoad;
+	private Place[] westRightRoad;
+	private Place[] eastLeftRoad;
+	private Place[] eastRightRoad;
+	private Place[] southLeftRoad;
+	private Place[] southRightRoad;
+	private Place[] northLeftRoad;
+	private Place[] northRightRoad;
 
-	private GridLayout westLayout = new GridLayout(1, 100);
+	private GridLayout roadGridLayout = new GridLayout(1, 100);
+
 	private JPanel mainPanel = new JPanel();
-	private JPanel leftRoadPanel = new JPanel();
-	private JPanel rightRoadPanel = new JPanel();
+	private JPanel westLeftRoadPanel = new JPanel();
+	private JPanel westRightRoadPanel = new JPanel();
+	private JPanel eastLeftRoadPanel = new JPanel();
+	private JPanel eastRightRoadPanel = new JPanel();
 
 	public Gui(TrafficSimulationSystem system) {
-		this.system = system;
-		
+		westLeftRoad = system.getRoadLayout().get("westLeftRoad");
+		westRightRoad = system.getRoadLayout().get("westRightRoad");
+		eastLeftRoad = system.getRoadLayout().get("eastLeftRoad");
+		eastRightRoad = system.getRoadLayout().get("eastRightRoad");
+
 		add(mainPanel);
 		mainPanel.setLayout(new GridLayout(2, 2));
-		mainPanel.add(leftRoadPanel);
-		mainPanel.add(rightRoadPanel);
-		
-		leftRoadPanel.setLayout(westLayout);
-		rightRoadPanel.setLayout(westLayout);
-		
+		mainPanel.add(westLeftRoadPanel);
+		mainPanel.add(eastLeftRoadPanel);
+		mainPanel.add(westRightRoadPanel);
+		mainPanel.add(eastRightRoadPanel);
+
+		westLeftRoadPanel.setLayout(roadGridLayout);
+		westRightRoadPanel.setLayout(roadGridLayout);
+		eastLeftRoadPanel.setLayout(roadGridLayout);
+		eastRightRoadPanel.setLayout(roadGridLayout);
+
 		setSize(1600, 75);
 		setVisible(true);
 		setLocationRelativeTo(null);
@@ -42,32 +56,55 @@ public class Gui extends JFrame implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			leftRoad = system.getLeftRoad();
-			rightRoad = system.getRightRoad();
-			
-			leftRoadPanel.removeAll();
-			rightRoadPanel.removeAll();
-			
-			for (Place p : leftRoad) {
+			westLeftRoadPanel.removeAll();
+			westRightRoadPanel.removeAll();
+			eastLeftRoadPanel.removeAll();
+			eastRightRoadPanel.removeAll();
+
+			for (Place p : westLeftRoad) {
 				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle().getImage()));
-					leftRoadPanel.add(label);
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					westLeftRoadPanel.add(label);
 				} else {
 					JLabel label = new JLabel();
-					leftRoadPanel.add(label);
+					westLeftRoadPanel.add(label);
+				}
+			}
+
+			for (Place p : westRightRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					westRightRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					westRightRoadPanel.add(label);
 				}
 			}
 			
-			for (Place p : rightRoad) {
+			for (Place p : eastLeftRoad) {
 				if (!p.isFree()) {
-					JLabel label = new JLabel(new ImageIcon(p.getVehicle().getImage()));
-					rightRoadPanel.add(label);
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					eastLeftRoadPanel.add(label);
 				} else {
 					JLabel label = new JLabel();
-					rightRoadPanel.add(label);
+					eastLeftRoadPanel.add(label);
 				}
 			}
-			
+
+			for (Place p : eastRightRoad) {
+				if (!p.isFree()) {
+					JLabel label = new JLabel(new ImageIcon(p.getVehicle()
+							.getImage()));
+					eastRightRoadPanel.add(label);
+				} else {
+					JLabel label = new JLabel();
+					eastRightRoadPanel.add(label);
+				}
+			}
+
 			validate();
 
 			try {
